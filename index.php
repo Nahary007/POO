@@ -1,32 +1,25 @@
 <?php
-//Parent class
-abstract class Car {
-  public $name;
-
-  public function __construct($name)
-  {
-    $this->name = $name;
-  }
-
-  abstract public function intro() : string;
+abstract class ParentClass {
+  // Abstract method with an argument
+  abstract protected function prefixName($name);
 }
 
-//child class
-class Audi extends Car {
-  public function intro() : string {
-    return "Choose german quality! I'm an $this->name";
-  }
-}
-
-class Volvo extends Car {
-  public function intro() : string {
-    return "Proud to be Swedish! I'm a $this->name!";
+class ChildClass extends ParentClass {
+  // The child class may define optional arguments that are not in the parent's abstract method
+  public function prefixName($name, $separator = ".", $greet = "Dear") {
+    if ($name == "John Doe") {
+      $prefix = "Mr";
+    } elseif ($name == "Jane Doe") {
+      $prefix = "Mrs";
+    } else {
+      $prefix = "";
+    }
+    return "{$greet} {$prefix}{$separator} {$name}";
   }
 }
 
-$audi = new Audi("Audi");
-echo $audi->intro();
-print "<br>";
-
-$volvo = new Volvo("Volvo");
-echo $volvo->intro();
+$class = new ChildClass;
+echo $class->prefixName("John Doe");
+echo "<br>";
+echo $class->prefixName("Jane Doe");
+?>
