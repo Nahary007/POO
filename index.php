@@ -7,9 +7,30 @@ interface Animal {
 class Cat implements Animal {
   public function makeSound()
   {
-    echo "Meow";
+    echo " Meow ";
+  }
+}
+
+class Dog implements Animal {
+  public function makeSound()
+  {
+    echo " Bark ";
+  }
+}
+
+class Mouse implements Animal {
+  public function makeSound()
+  {
+    echo " Squark ";
   }
 }
 
 $cat = new Cat();
-$cat->makeSound();
+$dog = new Dog();
+$mouse = new Mouse();
+
+$animals = array($cat, $dog, $mouse);
+
+foreach($animals as $animal) {
+  $animal->makeSound();
+}
