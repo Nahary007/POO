@@ -1,25 +1,32 @@
 <?php
-class Fruit {
+//Parent class
+abstract class Car {
   public $name;
-  public $color;
 
-  function __construct($name, $color) {
+  public function __construct($name)
+  {
     $this->name = $name;
-    $this->color = $color;
   }
 
-  public function intro(){
-    echo "The Fruit name is {$this->name} and the color is {$this->color}.";
+  abstract public function intro() : string;
+}
+
+//child class
+class Audi extends Car {
+  public function intro() : string {
+    return "Choose german quality! I'm an $this->name";
   }
 }
 
-
-class Strawberry extends Fruit {
-    public function message() {
-        echo "Am I a fruit or a berry? <br>";
-    }
+class Volvo extends Car {
+  public function intro() : string {
+    return "Proud to be Swedish! I'm a $this->name!";
+  }
 }
 
-$strawberry = new Strawberry("Strawbery", "red");
-$strawberry->message();
-$strawberry->intro();
+$audi = new Audi("Audi");
+echo $audi->intro();
+print "<br>";
+
+$volvo = new Volvo("Volvo");
+echo $volvo->intro();
