@@ -1,36 +1,14 @@
 <?php
 
-interface Animal {
-  public function makeSound();
-}
-
-class Cat implements Animal {
-  public function makeSound()
-  {
-    echo " Meow ";
+trait message1 {
+  public function msg1() {
+    echo "Hi there!";
   }
 }
 
-class Dog implements Animal {
-  public function makeSound()
-  {
-    echo " Bark ";
-  }
+class Welcome {
+  use message1;
 }
 
-class Mouse implements Animal {
-  public function makeSound()
-  {
-    echo " Squark ";
-  }
-}
-
-$cat = new Cat();
-$dog = new Dog();
-$mouse = new Mouse();
-
-$animals = array($cat, $dog, $mouse);
-
-foreach($animals as $animal) {
-  $animal->makeSound();
-}
+$greeting = new Welcome();
+$greeting->msg1();
