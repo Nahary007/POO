@@ -1,18 +1,17 @@
 <?php
 
-class Domain {
-  protected static function getWebsiteName() {
-    return "w3school.com";
+class Pi {
+  public static $value = 3.14159;
+}
+
+class x extends pi {
+
+  public function xStatic() {
+    return parent::$value;
   }
 }
 
-class domainW3 extends Domain {
-  public $websiteName;
-  public function __construct() 
-  {
-    $this->websiteName = parent::getWebsiteName();
-  }
-}
+echo x::$value;
 
-$domain = new domainW3;
-echo $domain->websiteName;
+$x = new x();
+echo $x->xStatic();
