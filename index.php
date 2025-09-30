@@ -1,29 +1,18 @@
 <?php
 
-trait message1 {
-  public  function msg1() {
-    echo "OOP is fun! ";
+class Domain {
+  protected static function getWebsiteName() {
+    return "w3school.com";
   }
 }
 
-trait message2 {
-  public function msg2() {
-    echo "OOP reduces code duplication!";
+class domainW3 extends Domain {
+  public $websiteName;
+  public function __construct() 
+  {
+    $this->websiteName = parent::getWebsiteName();
   }
 }
 
-class Welcome1 {
-  use message1;
-}
-
-class Welcome2 {
-  use message1, message2;
-}
-
-$obj = new Welcome1();
-$obj->msg1();
-echo "<br>";
-
-$obj2 = new Welcome2();
-$obj2->msg1();
-$obj2->msg2();
+$domain = new domainW3;
+echo $domain->websiteName;
